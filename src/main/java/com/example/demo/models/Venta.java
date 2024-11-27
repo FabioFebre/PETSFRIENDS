@@ -18,7 +18,7 @@ public class Venta {
     @JoinColumn(name = "metodo_pago_id", nullable = false)
     private MetodoPago metodo_id;
 
-    @Column(name = "numero_tarjeta", length = 16, nullable = true)
+    @Column(name = "numero_tarjeta", length = 16)
     private String numeroTarjeta;
 
 
@@ -72,7 +72,6 @@ public class Venta {
         return "Transaccion " + id + " - Usuario: " + usuario.getUsername();
     }
 
-    // Getters y Setters
     public Long getId() {
         return id;
     }

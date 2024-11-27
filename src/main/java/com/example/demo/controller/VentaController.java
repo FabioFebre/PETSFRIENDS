@@ -126,14 +126,15 @@ public class VentaController {
         venta.setTotal(total);
 
         if ("PayPal".equalsIgnoreCase(metodoPago.getNombre())) {
+            // Si el método de pago es PayPal, correo es obligatorio
             if (correo == null || correo.isEmpty()) {
                 model.addAttribute("errorMessage", "El correo de PayPal es obligatorio.");
                 return "transaccion";
             }
             venta.setCorreo(correo);
         } else {
-            // Manejar pagos con tarjeta
-            if ( fechaExpiracion == null || cvv == null) {
+            if (numeroTarjeta == null || numeroTarjeta.isEmpty() ||
+                    fechaExpiracion == null || cvv == null || cvv.isEmpty()) {
                 model.addAttribute("errorMessage", "Todos los campos de la tarjeta son obligatorios.");
                 return "transaccion";
             }
